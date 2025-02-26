@@ -1,4 +1,5 @@
-# Chess
+## Chess
+#Move Format
 General move format: the initial square name then ending square name without spaces (ex: e2e4) <br />
 Castling format: the initial square and the ending square of the king (ex: e1 g1) <br />
 En Passant format: the initial square and the ending square of the capturing pawn (ex: e5d6) <br />
