@@ -22,10 +22,10 @@ class Piece {
     Vector<Square> moves = new Vector<>();
 
 
-    void updateMoves() {
+    void updateMoves() throws Exception {
     }
 
-    void removeIllegal() {
+    void removeIllegal() throws Exception {
         Vector<Square> temp_moves = new Vector<>();
         for (Square b : moves) {
             Board temp_board = new Board(new FEN(board));

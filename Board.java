@@ -55,7 +55,7 @@ public class Board {
         fullMove = Integer.parseInt(fen.fullMove);
     }
 
-    void updateMoves(Piece.Color color, boolean removeIllegal) {
+    void updateMoves(Piece.Color color, boolean removeIllegal) throws Exception {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (squares[i][j].piece != null && squares[i][j].piece.color == color) {
@@ -67,7 +67,7 @@ public class Board {
         }
     }
 
-    boolean gameOver() {
+    boolean gameOver() throws Exception {
         if (halfMove == 100)
             return true;
         updateMoves(toPlay, true);
@@ -82,7 +82,7 @@ public class Board {
         return true;
     }
 
-    boolean isAttacked(Piece.Color defender, Square square) {
+    boolean isAttacked(Piece.Color defender, Square square) throws Exception {
         Piece.Color attacker = defender == Piece.Color.White ? Piece.Color.Black : Piece.Color.White;
         updateMoves(attacker, false);
         for (int i = 0; i < 8; i++) {
@@ -98,7 +98,7 @@ public class Board {
         return false;
     }
 
-    boolean inCheck(Piece.Color defender) {
+    boolean inCheck(Piece.Color defender) throws Exception {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (squares[i][j].piece != null && squares[i][j].piece.color == defender && squares[i][j].piece.type == Piece.Type.King)
@@ -179,6 +179,15 @@ public class Board {
         if (Objects.equals(a.getName(), "h8") || Objects.equals(a.getName(), "e8"))
             castle_k = false;
         if (Objects.equals(a.getName(), "a8") || Objects.equals(a.getName(), "e8"))
+            castle_q = false;
+
+        if (Objects.equals(b.getName(), "h1") || Objects.equals(b.getName(), "e1"))
+            castle_K = false;
+        if (Objects.equals(b.getName(), "a1") || Objects.equals(b.getName(), "e1"))
+            castle_Q = false;
+        if (Objects.equals(b.getName(), "h8") || Objects.equals(b.getName(), "e8"))
+            castle_k = false;
+        if (Objects.equals(b.getName(), "a8") || Objects.equals(b.getName(), "e8"))
             castle_q = false;
 
         // Castle Check

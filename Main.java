@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner scn = new Scanner(System.in);
         Map<String, Integer> repetition = new HashMap<>();
         Board board;
@@ -32,8 +32,8 @@ public class Main {
         repetition.putIfAbsent(fen, 0);
         repetition.put(fen, repetition.get(fen) + 1);
         while (!board.gameOver() && repetition.get(fen) < 3) {
+            System.out.println(board.toPlay + " to move. Please enter the move: ");
             while (true) {
-                System.out.println(board.toPlay + " to move. Please enter the move: ");
                 String move = scn.nextLine();
                 try {
                     board.play(move);

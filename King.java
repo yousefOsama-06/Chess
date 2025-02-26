@@ -7,7 +7,7 @@ class King extends Piece {
     }
 
     @Override
-    void updateMoves() {
+    void updateMoves() throws Exception {
         moves.clear();
         int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
         int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
